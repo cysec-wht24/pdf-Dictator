@@ -8,14 +8,14 @@ Reads a PDF aloud using Microsoft's Christopher Neural voice.
 ```cmd
 python -m venv venv
 venv\Scripts\activate
-pip install pypdf edge-tts pygame
+pip install pypdf edge-tts pygame keyboard
 ```
 
 ### Mac
 ```bash
 python3 -m venv venv
 source venv/bin/activate
-pip install pypdf edge-tts pygame
+pip install pypdf edge-tts pygame keyboard
 ```
 
 ## Usage
@@ -24,12 +24,18 @@ pip install pypdf edge-tts pygame
 python dictator.py
 ```
 
+## Controls
+
+| Key | Action |
+|-----|--------|
+| `Space` | Pause / Resume |
+
 ## Configuration
 
 | Option | Location in code | Example |
 |--------|-----------------|---------|
 | Start page | `start_page = 19` | Change to any page number |
-| Speed | `rate="-10%"` | `-20%` slower, `+10%` faster |
+| Speed | `rate="0%"` | `-20%` slower, `+10%` faster |
 | Voice | `VOICE = "en-US-ChristopherNeural"` | See edge-tts docs for others |
 
 ## Ignored Phrases

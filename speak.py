@@ -4,6 +4,7 @@ import asyncio
 import edge_tts
 import pygame
 import io
+import keyboard
 
 VOICE = "en-US-ChristopherNeural"
 
@@ -30,6 +31,15 @@ async def speak(text):
     pygame.mixer.music.load(io.BytesIO(audio))
     pygame.mixer.music.play()
     while pygame.mixer.music.get_busy():
+        if keyboard.is_pressed("space"):
+            pygame.mixer.music.pause()
+            print("Paused — press space to resume")
+            while keyboard.is_pressed("space"):  # wait for release
+                pygame.time.wait(100)
+            while not keyboard.is_pressed("space"):  # wait for next press
+                pygame.time.wait(100)
+            pygame.mixer.music.unpause()
+            print("Resumed")
         pygame.time.wait(100)
 
 for page in reader.pages[actual_page:]:
